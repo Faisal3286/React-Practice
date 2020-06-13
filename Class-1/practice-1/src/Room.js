@@ -2,32 +2,37 @@ import React, { useState } from 'react';
 import './Room.css';
 
 const Room = () => {
-    const [isLit,setLit] = useState(true);
-    let [age, setAge] = useState(24);
-    let updateLit = () => {
+    const [isLit,setLit] = useState(false);
+    let [roomTemp, setTemp] = useState(72);
+    let OnLit = () => {
         console.log('Button is clicked');
-        setLit(!isLit);
+        setLit(true);
         // isLit = !isLit;
     }
-    let updateAge = () => {
+    let OffLit = () => {
+        console.log('Button is clicked');
+        setLit(false);
+        // isLit = !isLit;
+    }
+    let increaseTemp = () => {
         console.log('Click to increase Age');
-        setAge(++age);
+        setTemp(++roomTemp);
+    }
+    let decreaseTemp = () => {
+        console.log('Click to increase Age');
+        setTemp(--roomTemp);
     }
   return (
     <div className ={`room ${isLit? 'lit' : 'dark'}`}>
-     This is room : Lit = {isLit? 'Lit' : 'dark' }
+     This is room Light is = {isLit? 'Lit' : 'dark' }
      <br/>
-     <button onClick={updateLit}> Toggle Light</button>
+     <button onClick={OnLit}>ON</button>
+     <button onClick={OffLit}> OFF</button>
      <br/>
-     Age = {age}
+     roomTemp = {roomTemp}
      <br/>
-     <button onClick = {
-         updateAge = () => {
-            console.log('Age increase on every click');
-            setAge(++age);
-        } 
-     }
-     >Click to increase Age</button>
+     <button onClick={increaseTemp}>Increase roomTemp</button>
+     <button onClick={decreaseTemp}>Increase roomTemp</button>
     </div>
   );
 }
